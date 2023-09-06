@@ -1,13 +1,17 @@
 import axios from 'axios'
-import React, { useState } from 'react'
+import React, { useContext, useState } from 'react'
 import {VscSearch} from 'react-icons/Vsc'
+import {BsSun,BsMoon} from 'react-icons/Bs'
 import '../App.css'
+import { AppContext } from '../App'
 
 
 const Dictionary = () => {
     const [entry, setentry] = useState('')
     const [entryresult, setentryresult] = useState(null)
     const [empty, setempty] = useState('')
+    const { setTheme, theme} = useContext(AppContext)
+    console.log(theme);
     let endpoint = `https://api.dictionaryapi.dev/api/v2/entries/en/${entry}`
     
     const getResult = () => {
@@ -40,11 +44,17 @@ const Dictionary = () => {
     }
   return (
     <>
-    <div style={myDiv} className='bg-slate-700'>
+    <div style={myDiv} className='bg-slate-700 dark:bg-white'>
         <nav className='text-white p-4'>
-            <ul className='flex justify-between'>
+            <ul className='flex justify-between'> 
                 <li>logo</li>
-                <li><button>light</button></li>
+                <li className='cursor-pointer'>
+                    {
+                        theme == "dark" ? <BsSun onClick={(e)=> setTheme("light")}/> :
+                        <BsMoon onClick={(e)=> setTheme("dark")}/>
+                    }
+                    
+                </li>
             </ul>
         </nav>
         <div>
