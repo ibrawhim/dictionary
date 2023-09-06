@@ -4,6 +4,8 @@ import {VscSearch} from 'react-icons/Vsc'
 import {BsSun,BsMoon} from 'react-icons/Bs'
 import '../App.css'
 import { AppContext } from '../App'
+import logo from '../images/logo.png'
+import logo2 from '../images/logo2.png'
 
 
 const Dictionary = () => {
@@ -47,8 +49,8 @@ const Dictionary = () => {
     <div style={myDiv} className='bg-slate-700 dark:bg-white'>
         <nav className='text-white p-4'>
             <ul className='flex justify-between'> 
-                <li className='dark:text-black'>logo</li>
-                <li className='cursor-pointer'>
+             <li className='dark:text-black'><img src={ theme == "dark" ? logo2: logo} width={theme== "dark"? 60: 50} alt="" /></li>
+                <li className={theme=="dark"? 'cursor-pointer mt-2':  'cursor-pointer mt-3'}>
                     {
                         theme == "dark" ? <BsMoon className='dark:text-black' onClick={(e)=> setTheme("light")}/> :
                         <BsSun onClick={(e)=> setTheme("dark")}/>
