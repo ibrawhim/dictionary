@@ -4,8 +4,10 @@ import {VscSearch} from 'react-icons/Vsc'
 import {BsSun,BsMoon} from 'react-icons/Bs'
 import '../App.css'
 import { AppContext } from '../App'
-import logo from '../images/logo.png'
-import logo2 from '../images/logo2.png'
+import { Formik } from 'formik'
+import * as Yup from 'yup'
+// import logo from '../images/logo.png'
+// import logo2 from '../images/logo2.png'
 
 
 const Dictionary = () => {
@@ -44,13 +46,38 @@ const Dictionary = () => {
     height: '200vh',
     overflowY: 'none'
     }
+    const handleSubmit = (e) => {
+        e.preventDefault()
+        if(entry == ""){
+            setempty('Search Input empty')
+            setentryresult("")
+        }else {
+            axios.get(endpoint)
+        .then((result)=>{
+            console.log(result.data)
+            setentryresult(result.data)
+            setentry("")
+            setempty("")
+        })
+        .catch((error)=>{
+            console.log(error);
+            if(error.code=='ERR_NETWORK'){
+                setempty('network error')
+                setentryresult("")
+            }else if(error.code=='ERR_BAD_REQUEST'){
+                setempty(error.response.data.title);
+                setentryresult("")
+            }
+        })
+        }
+    }
   return (
     <>
     <div style={myDiv} className='bg-slate-700 dark:bg-white'>
         <nav className='text-white p-4'>
             <ul className='flex justify-between'> 
-             <li className='dark:text-black'><img src={ theme == "dark" ? logo2: logo} width={theme== "dark"? 60: 50} alt="" /></li>
-                <li className={theme=="dark"? 'cursor-pointer mt-2':  'cursor-pointer mt-3'}>
+             <li className='dark:text-black font-bold'>Dictionary</li>
+                <li className='cursor-pointer mt-2'>
                     {
                         theme == "dark" ? <BsMoon className='dark:text-black' onClick={(e)=> setTheme("light")}/> :
                         <BsSun onClick={(e)=> setTheme("dark")}/>
@@ -60,22 +87,22 @@ const Dictionary = () => {
             </ul>
         </nav>
         <div>
-            <div className="relative flex items-stretch sm:w-1/2 md:w-1/3 lg:w-1/3 mx-auto justify-center items-center ">
+            <form className="relative flex items-stretch sm:w-1/2 md:w-1/3 lg:w-1/3 mx-auto justify-center items-center " onSubmit={handleSubmit}>
             <input
                 type="text"
                 placeholder="Enter Keyword"
-                className="w-full bg-cyan-800 caret-white py-2 pl-10 pr-4 rounded-l-md border border-gray-300 focus:border-black-500  outline-none"
+                className="w-full bg-cyan-800 caret-white py-2 pl-10 pr-4 rounded-l-md border text-white dark:text-black border-gray-300 focus:border-black-500  outline-none"
                 onChange={(e)=>setentry(e.target.value)} value={entry}
             />
             <div className="absolute inset-y-0 right-0 flex items-center pl-3">
                 <button
                 type="submit"
-                className=" text-black font-semibold rounded-r-md px-4 py-2"
+                className=" text-white font-semibold rounded-r-md px-4 py-2"
                 onClick={getResult}>
                 <VscSearch/>
                 </button>
              </div>
-            </div>
+            </form>
         </div>
             <small className='flex justify-center my-2 text-red-500'>{empty}</small>
 
