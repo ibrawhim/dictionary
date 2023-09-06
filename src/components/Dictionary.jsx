@@ -47,11 +47,11 @@ const Dictionary = () => {
     <div style={myDiv} className='bg-slate-700 dark:bg-white'>
         <nav className='text-white p-4'>
             <ul className='flex justify-between'> 
-                <li>logo</li>
+                <li className='dark:text-black'>logo</li>
                 <li className='cursor-pointer'>
                     {
-                        theme == "dark" ? <BsSun onClick={(e)=> setTheme("light")}/> :
-                        <BsMoon onClick={(e)=> setTheme("dark")}/>
+                        theme == "dark" ? <BsMoon className='dark:text-black' onClick={(e)=> setTheme("light")}/> :
+                        <BsSun onClick={(e)=> setTheme("dark")}/>
                     }
                     
                 </li>
@@ -87,7 +87,7 @@ const Dictionary = () => {
             {
                 entryresult[0].meanings[0].definitions.map((item, index)=>(
                     <ul key={index}>
-                        <li className='text-white'><span className="text-red-500 text-sm">{index+1}. </span>{item.definition}</li>
+                        <li className='text-white dark:text-cyan-800 dark:font-semibold'><span className="text-red-500 text-sm">{index+1}. </span>{item.definition}</li>
                     </ul>
                     
                 ))
