@@ -4,18 +4,18 @@ import {VscSearch} from 'react-icons/Vsc'
 import {BsSun,BsMoon} from 'react-icons/Bs'
 import '../App.css'
 import { AppContext } from '../App'
-import { Formik } from 'formik'
-import * as Yup from 'yup'
-// import logo from '../images/logo.png'
-// import logo2 from '../images/logo2.png'
+
+
 
 
 const Dictionary = () => {
     const [entry, setentry] = useState('')
     const [entryresult, setentryresult] = useState(null)
     const [empty, setempty] = useState('')
-    const { setTheme, theme} = useContext(AppContext)
-    console.log(theme);
+    const { setTheme, theme, font, setFont} = useContext(AppContext)
+    
+    console.log(font);
+    // console.log(theme);
     let endpoint = `https://api.dictionaryapi.dev/api/v2/entries/en/${entry}`
     
     const getResult = () => {
@@ -77,6 +77,14 @@ const Dictionary = () => {
         <nav className='text-white p-4'>
             <ul className='flex justify-between'> 
              <li className='dark:text-black font-bold'>Dictionary</li>
+                <select className='bg-cyan-800 p-1 rounded' onChange={(e)=>setFont(e.target.value)} name="" id="">
+                    <option value="Serif">Serif</option>
+                    <option value="Poppins">Poppins</option>
+                    <option value="Caprasimo">Caprasimo</option>
+                    <option value="Calistoga">Calistoga</option>
+                    <option value="Montserrat">Montserrat</option>
+                    <option value="Quicksand">Quicksand</option>
+                </select>
                 <li className='cursor-pointer mt-2'>
                     {
                         theme == "dark" ? <BsMoon className='dark:text-black' onClick={(e)=> setTheme("light")}/> :
