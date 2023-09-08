@@ -13,8 +13,17 @@ function App() {
     useEffect(() => {
         if (theme === "dark"){
           document.documentElement.classList.add("dark")
-        }
-        else{
+        }else if ('serviceworker' in navigator) {
+          window.addEventListener('load', ()=>{
+              navigator.serviceWorker.register('/sw.js')
+              .then(registration => {
+                  console.log('SW registered', registration);
+              })
+              .catch(registrationError => {
+                  console.log('SW registration failed', registrationError);
+              })
+          })
+        }else{
           document.documentElement.classList.remove("dark")
         }
     }, [theme])

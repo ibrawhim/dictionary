@@ -14,7 +14,6 @@ const Dictionary = () => {
     const [empty, setempty] = useState('')
     const { setTheme, theme, font, setFont} = useContext(AppContext)
     
-    console.log(font);
     // console.log(theme);
     let endpoint = `https://api.dictionaryapi.dev/api/v2/entries/en/${entry}`
     
