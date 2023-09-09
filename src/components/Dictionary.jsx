@@ -75,7 +75,7 @@ const Dictionary = () => {
     <div style={myDiv} className='bg-slate-700 dark:bg-white'>
         <nav className='text-white p-4'>
             <ul className='flex justify-between'> 
-             <li className='dark:text-black font-bold'>Dictionary</li>
+             <li className='dark:text-black text-red-500 font-bold'>Dictionary</li>
                 <select className='bg-cyan-800 p-1 rounded' onChange={(e)=>setFont(e.target.value)} name="" id="">
                     <option value="Serif">Serif</option>
                     <option value="Poppins">Poppins</option>
