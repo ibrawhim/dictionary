@@ -1,7 +1,7 @@
 import axios from 'axios'
 import React, { useContext, useState } from 'react'
-import {VscSearch} from 'react-icons/Vsc'
-import {BsSun,BsMoon} from 'react-icons/Bs'
+import {BsSun,BsMoon} from 'react-icons/bs'
+import {VscSearch} from 'react-icons/vsc'
 import '../App.css'
 import { AppContext } from '../App'
 
