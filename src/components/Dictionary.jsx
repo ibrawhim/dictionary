@@ -9,6 +9,7 @@ import { AppContext } from '../App'
 
 
 
+
 const Dictionary = () => {
     const [entry, setentry] = useState('')
     const [entryresult, setentryresult] = useState(null)
