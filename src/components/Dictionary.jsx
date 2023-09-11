@@ -1,6 +1,7 @@
 import axios from 'axios'
 import React, { useContext, useState } from 'react'
-import {BsSun,BsMoon} from 'react-icons/bs'
+import {BsMoon} from 'react-icons/bs'
+import {BsSun} from 'react-icons/bs'
 import {VscSearch} from 'react-icons/vsc'
 import '../App.css'
 import { AppContext } from '../App'
@@ -118,7 +119,7 @@ const Dictionary = () => {
         {
             entryresult &&
             <>
-            <div><span className='font-bold first-letter:text-7xl'>{entryresult[0].word}</span> <span className='font-bold text-red-500'>({entryresult[0].phonetic})</span></div>
+            <div><span className='font-bold text-3xl'>{entryresult[0].word}</span> <span className='font-bold text-red-500 text-2xl'>({entryresult[0].phonetic})</span></div>
 
             {
                 entryresult[0].meanings[0].definitions.map((item, index)=>(
