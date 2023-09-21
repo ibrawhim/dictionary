@@ -32,7 +32,7 @@ function App() {
   return (
     <>
     <AppContext.Provider value={{theme, setTheme, font, setFont}}>
-      <div className={`${font==='serif'? 'font-[serif]': font === "Poppins" ? 'font-[Poppins]': font === 'Caprasimo' ? 'font-[caprasimo]' : font === 'Calistoga' ? 'font-[Calistoga]' : font === 'Montserrat' ? 'font-[Montserrat]' : 'font-[Quicksand]' } overflow-x-hidden`}>
+      <div className={`${font==='serif'? 'font-[serif]': font === "Poppins" ? 'font-[Poppins]': font === 'Caprasimo' ? 'font-[caprasimo]' : font === 'Calistoga' ? 'font-[Calistoga]' : font === 'Montserrat' ? 'font-[Montserrat]' : 'font-[Quicksand]' }`}>
       <Dictionary/>
       </div>
     </AppContext.Provider>

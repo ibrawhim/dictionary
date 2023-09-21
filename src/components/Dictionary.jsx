@@ -131,9 +131,9 @@ const Dictionary = () => {
                 ))
                 
             }
-            <div className='flex justify-center'>
+            <div className='flex justify-center flex-wrap text-center'>
             {entryresult[0].meanings[0].synonyms.map((item, index)=>(
-                    <div className='text-red-500 font-semibold' key={index}>
+                    <div className='text-red-500 text-center mx-auto font-semibold' key={index}>
                         <span>{item},</span>
                     </div>
                 ))
