@@ -125,16 +125,24 @@ const Dictionary = () => {
             {
                 entryresult[0].meanings[0].definitions.map((item, index)=>(
                     <ul key={index}>
-                        <li className='text-white dark:text-cyan-800 dark:font-semibold'><span className="text-red-500 text-sm">{index+1}. </span>{item.definition}</li>
+                        <li className='text-white px-10 dark:text-cyan-800 dark:font-semibold'><span className="text-red-500 text-sm">{index+1}. </span>{item.definition}</li>
                     </ul>
                     
                 ))
                 
             }
-            <div className='flex justify-center flex-wrap text-center'>
+            <div className='flex justify-center gap-1 items-center  flex-wrap text-center font-bold'>{entryresult[0].meanings[0].synonyms.length == 0 ? '' : 'Synonyms:' }
             {entryresult[0].meanings[0].synonyms.map((item, index)=>(
-                    <div className='text-red-500 text-center mx-auto font-semibold' key={index}>
-                        <span>{item},</span>
+                    <div className='text-red-500 font-semibold' key={index}>
+                        <div>{item},</div>
+                    </div>
+                ))
+            }
+            </div>
+            <div className='flex justify-center gap-1 items-center  flex-wrap text-center font-bold underline'>{entryresult[0].meanings[0].antonyms.length == 0 ? '' : 'Antonyms:' }
+            {entryresult[0].meanings[0].antonyms.map((item, index)=>(
+                    <div className='text-red-500 font-semibold' key={index}>
+                        <div>{item},</div>
                     </div>
                 ))
             }
